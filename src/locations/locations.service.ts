@@ -1,15 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import { CreateLocationDto } from './dto/create-location.dto.js';
 import { UpdateLocationDto } from './dto/update-location.dto.js';
+import { PrismaService } from '../prisma/prisma.service.js';
 
 @Injectable()
 export class LocationsService {
+  constructor (private readonly db: PrismaService) {}
+
   create(createLocationDto: CreateLocationDto) {
-    return 'This action adds a new location';
+    return this.db.location.create({
+      data: createLocationDto
+    })
   }
 
   findAll() {
-    return `This action returns all locations`;
+    return this.db.location.
   }
 
   findOne(id: number) {
@@ -17,7 +22,7 @@ export class LocationsService {
   }
 
   update(id: number, updateLocationDto: UpdateLocationDto) {
-    return `This action updates a #${id} location`;
+    return 
   }
 
   remove(id: number) {
