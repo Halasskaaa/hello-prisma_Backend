@@ -17,3 +17,11 @@ model Forecast {
   temp Int
   weather String
 }
+
+model Location {
+  id Int @id @default(autoincrement())
+  name String
+  lat Decimal
+  lon Decimal
+}
+//npx prisma db push
