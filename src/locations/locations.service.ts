@@ -14,18 +14,25 @@ export class LocationsService {
   }
 
   findAll() {
-    return this.db.location.
+    return this.db.location.findMany();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} location`;
+    return this.db.location.findUniqueOrThrow({
+      where: {id}
+    })
   }
 
   update(id: number, updateLocationDto: UpdateLocationDto) {
-    return 
+    return this.db.location.update({
+      data: updateLocationDto,
+      where: {id}
+    })
   }
 
   remove(id: number) {
-    return `This action removes a #${id} location`;
+    return this.db.location.delete({
+      where: {id}
+    })
   }
 }
