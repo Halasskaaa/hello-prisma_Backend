@@ -25,3 +25,4 @@ model Location {
   lon Decimal
 }
 //npx prisma db push
+//npx nest generate resource - (naming it) - REST API - Y
