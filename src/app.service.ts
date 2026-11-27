@@ -13,4 +13,16 @@ export class AppService {
   getHello(): string {
     return 'Hello World!';
   }
+
+  weather() {
+    return this.db.forecast.findMany();
+  }
+    
+  singleWeather(id: number) {
+    return this.db.forecast.findUniqueOrThrow({
+      where: {
+        id
+      }
+    })
+  }
 }
