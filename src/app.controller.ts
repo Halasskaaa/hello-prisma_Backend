@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Render } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Render } from '@nestjs/common';
 import { AppService } from './app.service.js';
 
 @Controller()
@@ -20,5 +20,10 @@ export class AppController {
   @Get('weather/:id')
   getSingleWeather(@Param('id') id: string) {
     return this.appService.singleWeather(Number(id));
+  }
+
+  @Delete('weather/:id')
+  deleteWeather(@Param('id') id: string) {
+    return this.appService.deleteWeather(Number(id));
   }
 }

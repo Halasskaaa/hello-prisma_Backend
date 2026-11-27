@@ -5,9 +5,13 @@ import { PrismaService } from './prisma/prisma.service.js';
 export class AppService {
 
   // Dependency Injection
-  db: PrismaService
-  constructor (db: PrismaService) {
-    this.db = db
+  // db: PrismaService
+  // constructor (db: PrismaService) {
+  //   this.db = db
+  // } the below is the same
+
+  constructor (private readonly db: PrismaService) {
+
   }
 
   getHello(): string {
@@ -21,7 +25,15 @@ export class AppService {
   singleWeather(id: number) {
     return this.db.forecast.findUniqueOrThrow({
       where: {
-        id
+        id: id
+      }
+    })
+  }
+
+  deleteWeather(id: number) {
+    return this.db.forecast.delete({
+      where: {
+        id: id
       }
     })
   }
